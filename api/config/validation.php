@@ -29,6 +29,9 @@ return [
         "destroyProduct" => [
             'id' => 'required|integer'
         ],
+        "uploadImage" => [
+            'file' => 'required|file|image|dimensions:max_width=2000,max_height=1000'
+        ],
         "updateProduct" => [
             'id' => 'required|integer',
             'name' => 'required|string|max:255',    

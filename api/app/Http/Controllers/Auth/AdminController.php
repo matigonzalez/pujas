@@ -28,7 +28,7 @@ class AdminController extends ValidatorController
      */
     public function admin(Request $request)
     {      
-        if(Auth::user()->privileges && $this->validator($request->action, $request->all())->errors()->isEmpty()){
+        if(Auth::user() && Auth::user()->privileges && $this->validator($request->action, $request->all())->errors()->isEmpty()){
             $this->request = $request;
             $this->{$request->action}();
         }

@@ -21,7 +21,12 @@ class ValidatorController extends Controller
      */
     protected function validator(string $input, array $data)
     {        
-        $validator = Validator::make($data, config('validation')[(new \ReflectionClass($this))->getShortName()][$input]);
+        try {        
+            $validator = Validator::make($data, config('validation')[(new \ReflectionClass($this))->getShortName()][$input]);
+        } catch (\ErrorException $e) {
+            throw new \ErrorException("No validation option for $input");
+        }
+
         $this->errors = $validator->errors();
         return $validator;
     }

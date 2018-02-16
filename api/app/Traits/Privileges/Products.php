@@ -26,5 +26,11 @@ Trait Products {
         $product->on_sale = $this->request->input('on_sale');
         $product->save();
     }
+
+    protected function uploadImage(){   
+        $this->request->file->move(public_path('products'), 
+            'product_'.date('Y_m_d').'_'.time().'.'.$this->request->file->getClientOriginalExtension()
+        );  
+    }
 }
 
