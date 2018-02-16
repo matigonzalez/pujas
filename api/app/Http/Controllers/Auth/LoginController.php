@@ -20,7 +20,6 @@ class LoginController extends ValidatorController
      */
     public function getUserInfo()
     {
-        dd(Auth::logout());
         return Auth::user();
     }
 

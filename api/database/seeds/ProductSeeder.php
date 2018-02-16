@@ -2,7 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+use App\Product;
+
+class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ProductSeeder::class);      
-        $this->call(UserSeeder::class);      
+        Product::create(['name' => 'test','image' => 'http://test']);    
     }
 }
