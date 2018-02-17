@@ -20,6 +20,18 @@ Trait UserData {
     }
 
     /**
+     * Update privileges for one user.
+     *
+     * @return void
+     */
+    protected function getAllUsers()
+    {  
+        User::edit($this->request->input('id'), [
+            "privileges" => $this->request->input('value')
+        ]);    
+    }
+
+    /**
      * Logically deletes a user.
      *
      * @return void

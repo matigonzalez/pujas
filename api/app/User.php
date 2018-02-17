@@ -36,4 +36,13 @@ class User extends Authenticatable
     * @var array
     */
    protected $dates = ['deleted_at'];
+   
+   /**
+    * Relation.
+    *
+    * @return Illuminate\Database\Eloquent\Relations\HasMany
+    */
+   public function bids(){
+       return $this->hasMany(Bid::class);
+   }
 }

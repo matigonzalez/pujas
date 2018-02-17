@@ -15,5 +15,6 @@ class ProductSeeder extends Seeder
     {
         Product::create(['name' => 'Product1','image' => 'http://test']); 
         Product::create(['name' => 'Product2','image' => 'http://test']);    
+        Product::create(['name' => 'Product3','image' => 'http://test']);    
     }
 }

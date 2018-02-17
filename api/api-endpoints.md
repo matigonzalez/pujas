@@ -1,6 +1,9 @@
 
 # API Endpoints
 ### GET
+`Route::get('token');`
+ - Return token string
+
 `Route::get('auth/logout', 'Auth\LoginController@logout');`
  - Return null
 
@@ -12,6 +15,12 @@
 
 `Route::get('bid/user/{id}', 'GuestController@getBids')->where('id', '[0-9]+');`
  - Return bids for a specific user
+
+`Route::get('auth/admin/get/users', 'Auth\AdminController@getAllUsers');`
+ - Return all users
+
+`Route::get('products', 'GuestController@getAllProducts');`
+ - Return all products
 
 ### POST
 `Route::post('auth/register', 'Auth\RegisterController@processRequest');`

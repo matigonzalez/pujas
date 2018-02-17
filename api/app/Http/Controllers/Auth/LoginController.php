@@ -20,7 +20,9 @@ class LoginController extends ValidatorController
      */
     public function getUserInfo()
     {
-        return Auth::user()->name;
+        return (Auth::user()) ? 
+        response()->json(["name" => Auth::user()->name]) :
+        response()->json(["error" => "Need to login"], 401, ["WWW-Authenticate" => "Basic"]);
     }
 
     /**

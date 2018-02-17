@@ -26,7 +26,7 @@ class Bid extends Model
      * @var array
      */
     protected $hidden = [
-        //
+        'updated_at', 'deleted_at', 'user_id', 'product_id', 'id'
     ];
 
     /**

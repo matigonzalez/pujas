@@ -25,7 +25,7 @@ class Product extends Model
      * @var array
      */
     protected $hidden = [
-        //
+        'updated_at', 'deleted_at', 'id'
     ];
 
     /**

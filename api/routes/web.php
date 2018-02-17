@@ -17,9 +17,13 @@ Route::get('auth/logout', 'Auth\LoginController@logout');
 
 Route::post('auth/login', 'Auth\LoginController@checkAuth'); 
 Route::post('auth/register', 'Auth\RegisterController@processRequest');
-Route::post('auth/admin', 'Auth\AdminController@admin');
+
 Route::post('bid/store', 'BidsController@newBid');
 Route::get('bid/product/{id}', 'GuestController@getBids')->where('id', '[0-9]+');
 Route::get('bid/user/{id}', 'GuestController@getBids')->where('id', '[0-9]+');
+
+Route::post('auth/admin', 'Auth\AdminController@admin');
+Route::get('auth/admin/get/users', 'Auth\AdminController@getAllUsers');
+Route::get('products', 'GuestController@getAllProducts');
 
 
