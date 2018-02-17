@@ -18,7 +18,11 @@ Trait UserData {
         $user->save();        
     }
 
-
+    /**
+     * Logically deletes a user.
+     *
+     * @return void
+     */
     protected function destroyUser(){
         $user = User::find($this->request->input('id'));
         $user->deleted = 1;

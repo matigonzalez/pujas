@@ -13,6 +13,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::create(['name' => 'test','image' => 'http://test']);    
+        Product::create(['name' => 'Product1','image' => 'http://test']); 
+        Product::create(['name' => 'Product2','image' => 'http://test']);    
     }
 }

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Bid extends Model
 {
@@ -13,7 +14,7 @@ class Bid extends Model
      * @var array
      */
     protected $fillable = [
-        'product_id', 'amount'
+        'product_id', 'amount', 'user_id'
     ];
 
     /**
@@ -24,4 +25,15 @@ class Bid extends Model
     protected $hidden = [
         //
     ];
+
+    /**
+     * Get the highest Bid on database.
+     *
+     * @param  string $product_id
+     * @return \App\Bid
+     */
+    protected static function getHighestBid(string $product_id)
+    {
+        return DB::table('bids')->where('id', $product_id)->max('amount');
+    }
 }

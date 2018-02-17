@@ -3,7 +3,7 @@
 return [
     "RegisterController" => [
         "registerForm" => [
-            'name' => 'required|string|max:255',    
+            'name' => 'required|string|max:255|unique:users',    
             'password' => 'required|string|min:4',
         ]
     ],
@@ -30,13 +30,19 @@ return [
             'id' => 'required|integer'
         ],
         "uploadImage" => [
-            'file' => 'required|file|image|dimensions:max_width=2000,max_height=1000'
+            'file' => 'required|image|dimensions:max_width=2000,max_height=1000|max:10240|min:10'
         ],
         "updateProduct" => [
             'id' => 'required|integer',
             'name' => 'required|string|max:255',    
             'image' => 'required|string|url|max:255',
-            'on_sale' => 'required|integer|max:2'
+            'on_sale' => 'required|integer|max:3'
         ]
-    ]
+    ],
+    "BidsController" => [
+        "newBidForm" => [
+            'amount' => 'required|integer',    
+            'product' => 'required|integer|exists:products' 
+        ]
+    ]    
 ];

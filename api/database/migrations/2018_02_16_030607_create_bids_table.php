@@ -16,13 +16,16 @@ class CreateBidsTable extends Migration
         Schema::create('bids', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade');
             $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->string('amount');
             $table->timestamps();
             $table->boolean('deleted')->default(0);
         });
-    }
 
+    }
+// 
     /**
      * Reverse the migrations.
      *
