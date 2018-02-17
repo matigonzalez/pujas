@@ -17,7 +17,9 @@ class ValidatorController extends Controller
     /**
      * Get a validator for an incoming request.
      *
+     * @param string $input
      * @param array $data
+     * 
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(string $input, array $data)

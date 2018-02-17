@@ -14,13 +14,13 @@ class CreateTriggers extends Migration
         DB::unprepared('
         CREATE TRIGGER tr_Products_Logic_Delete_Bids_BU BEFORE UPDATE ON `products` FOR EACH ROW
             BEGIN
-                UPDATE bids SET deleted = NEW.deleted where bids.id = OLD.id;
+                UPDATE bids SET deleted_at = NEW.deleted_at where bids.id = OLD.id;
             END
         ');
         DB::unprepared('
         CREATE TRIGGER tr_User_Logic_Delete_Bids_BU BEFORE UPDATE ON `users` FOR EACH ROW
             BEGIN
-                UPDATE bids SET deleted = NEW.deleted where bids.id = OLD.id;
+                UPDATE bids SET deleted_at = NEW.deleted_at where bids.id = OLD.id;
             END
         ');
     }

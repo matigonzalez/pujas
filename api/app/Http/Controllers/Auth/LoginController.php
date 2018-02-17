@@ -40,9 +40,8 @@ class LoginController extends ValidatorController
      */
     public function checkAuth(Request $request)
     {
-        $this->validator("loginForm", $request->all());
 
-        if ($this->errors->isEmpty()){
+        if ($this->validator("loginForm", $request->all())->errors()->isEmpty()){
             /*
              * Try to login             
              */

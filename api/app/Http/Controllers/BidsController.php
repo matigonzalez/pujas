@@ -7,9 +7,12 @@ use App\Product;
 use App\Http\Controllers\ValidatorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Traits\Privileges\Access;
 
 class BidsController extends ValidatorController
 {
+
+    use Access;
 
     private $request;
     private $highestBid;
@@ -21,10 +24,8 @@ class BidsController extends ValidatorController
      * @return Illuminate\Support\MessageBag With validation errors.
      */
     public function newBid(Request $request)
-    {                
-
-        $this->validator("newBidForm", $request->all()); 
-        if ($this->errors->isEmpty()) {
+    {            
+        if ($this->validator("newBidForm", $request->all())->errors()->isEmpty()) {
             //If valid
             $this->request = $request;
             $this->ValidateBidAmount();
@@ -53,13 +54,11 @@ class BidsController extends ValidatorController
      * @return mixed
      */
     protected function ValidateBidAmount()
-    {        
-        $this->highestBid = intval(Bid::getHighestBid($this->product));
-
-        if ($this->highestBid <= $request->input('amount')) {
-            return $this->store($request->all());
-        }        
-        
+    {                
+        $this->highestBid = intval(Bid::getHighestBid($this->request->input('product')));
+        if ($this->highestBid <= $this->request->input('amount')) {
+            return $this->store($this->request->all());
+        }                
         $this->errors->add('amount', 'The amount must be greater than the last bid ' + "($this->highestBid)"); 
     }
 }

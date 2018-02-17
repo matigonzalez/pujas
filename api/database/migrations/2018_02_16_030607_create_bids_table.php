@@ -21,7 +21,7 @@ class CreateBidsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->string('amount');
             $table->timestamps();
-            $table->boolean('deleted')->default(0);
+            $table->softDeletes();
         });
 
     }

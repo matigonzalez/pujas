@@ -24,6 +24,10 @@ return [
             'id' => 'required|integer',
             'action' => 'required|string' 
         ],
+        "destroyBid" => [
+            'id' => 'required|integer',
+            'action' => 'required|string' 
+        ],
         "createProduct" => [
             'name' => 'required|string|max:255',    
             'image' => 'required|string|url|max:255',
@@ -48,7 +52,7 @@ return [
     "BidsController" => [
         "newBidForm" => [
             'amount' => 'required|integer',    
-            'product' => 'required|integer|exists:products' 
+            'product' => 'required|integer|exists:products,id' 
         ]
-    ]    
+    ]
 ];

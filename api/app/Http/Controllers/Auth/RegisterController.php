@@ -19,8 +19,8 @@ class RegisterController extends ValidatorController
      */
     public function processRequest(Request $request) 
     {    
-        $this->validator("registerForm", $request->all()); 
-        if ($this->errors->isEmpty()) {
+        
+        if ($this->validator("registerForm", $request->all())->errors()->isEmpty()) {
             //If valid
             $this->store($request->all());
             (new LoginController())->checkAuth($request);

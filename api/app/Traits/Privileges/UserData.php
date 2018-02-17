@@ -3,6 +3,7 @@
 namespace App\Traits\Privileges;
 
 use App\User;
+use App\Bid;
 
 Trait UserData {
 
@@ -13,9 +14,9 @@ Trait UserData {
      */
     protected function updateUserPrivileges()
     {  
-        $user = User::find($this->request->input('id'));
-        $user->privileges = $this->request->input('value');
-        $user->save();        
+        User::edit($this->request->input('id'), [
+            "privileges" => $this->request->input('value')
+        ]);    
     }
 
     /**
@@ -24,9 +25,16 @@ Trait UserData {
      * @return void
      */
     protected function destroyUser(){
-        $user = User::find($this->request->input('id'));
-        $user->deleted = 1;
-        $user->save();
+        User::destroy($this->request->input('id'));
+    }
+    
+    /**
+     * Logically deletes a bid.
+     *
+     * @return void
+     */
+    protected function destroyBid(){
+        Bid::destroy($this->request->input('id'));
     }
     
 }

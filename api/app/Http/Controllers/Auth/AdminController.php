@@ -30,12 +30,16 @@ class AdminController extends ValidatorController
      */
     public function admin(Request $request)
     {              
-        if
-        (
-            Auth::user() && 
-            Auth::user()->privileges && 
-            $this->validator($request->action, $request->all())->errors()->isEmpty()
-        ){
+        if (
+            !Auth::user() || 
+            !Auth::user()->privileges || 
+            !isset($request->action) 
+        ) {
+            abort(403, 'Admin area: Unauthorized action.');
+        }
+        
+        if($this->validator($request->action, $request->all())->errors()->isEmpty()){
+
             $this->request = $request;
             /*
              * Admin can:

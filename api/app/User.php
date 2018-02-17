@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\GeneralModel;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    
+    use Notifiable, GeneralModel, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -24,6 +27,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-    ];
+        'id', 'password'
+    ];    
+    
+    /**
+    * The attributes that should be mutated to dates.
+    *
+    * @var array
+    */
+   protected $dates = ['deleted_at'];
 }

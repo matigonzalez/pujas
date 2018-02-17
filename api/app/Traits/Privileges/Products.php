@@ -23,10 +23,8 @@ Trait Products {
      *
      * @return void
      */
-    protected function destroyProduct(){
-        $product = Product::find($this->request->input('id'));
-        $product->deleted = 1;
-        $product->save();
+    protected function destroyProduct(){    
+        Product::destroy($this->request->input('id'));
     }
 
     /**
@@ -35,11 +33,11 @@ Trait Products {
      * @return void
      */
     protected function updateProduct(){
-        $product = Product::find($this->request->input('id'));
-        $product->name = $this->request->input('name');
-        $product->image = $this->request->input('image');
-        $product->on_sale = $this->request->input('on_sale');
-        $product->save();
+        Product::edit($this->request->input('id'), [
+            "name" => $this->request->input('name'),
+            "image" => $this->request->input('image'),
+            "on_sale" => $this->request->input('on_sale')
+        ]);
     }
 
     /**

@@ -4,9 +4,14 @@
 `Route::get('auth/logout', 'Auth\LoginController@logout');`
  - Return null
 
-
 `Route::get('auth/userinfo', 'Auth\LoginController@getUserInfo');`
  - Return username
+
+`Route::get('bid/product/{id}', 'GuestController@getBids')->where('id', '[0-9]+');`
+ - Return bids for a specific product
+
+`Route::get('bid/user/{id}', 'GuestController@getBids')->where('id', '[0-9]+');`
+ - Return bids for a specific user
 
 ### POST
 `Route::post('auth/register', 'Auth\RegisterController@processRequest');`
@@ -37,6 +42,10 @@
  > 'action' => 'string',    
  > 'value' => 'boolean'
 ##### action.*destroyUser*
+ - Receives:
+ > 'id' => 'integer',
+ > 'action' => 'string' 
+##### action.*destroyBid*
  - Receives:
  > 'id' => 'integer',
  > 'action' => 'string' 

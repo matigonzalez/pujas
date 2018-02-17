@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->tinyInteger('on_sale')->length(1)->default(0);
             $table->timestamps();
-            $table->boolean('deleted')->default(0);
+            $table->softDeletes();
         });
     }
 
