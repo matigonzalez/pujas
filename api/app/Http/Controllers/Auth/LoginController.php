@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ValidatorController;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Lang;
 
 
 class LoginController extends ValidatorController
@@ -20,7 +20,6 @@ class LoginController extends ValidatorController
      */
     public function getUserInfo()
     {
-        dd(Auth::logout());
         return Auth::user();
     }
 
@@ -37,21 +36,22 @@ class LoginController extends ValidatorController
     /**
      * Attempt to login with request credentials.
      *
-     * @return mixed
+     * @return Illuminate\Support\MessageBag With validation errors.
      */
     public function checkAuth(Request $request)
     {
         $this->validator("loginForm", $request->all());
 
         if ($this->errors->isEmpty()){
-            $credentials = [
+            /*
+             * Try to login             
+             */
+            if(!Auth::attempt([
                 'name' => $request->input('name'),
                 'password' => $request->input('password')
-            ];
-            if(!Auth::attempt($credentials)){
-                return response('Not match', 403);
+            ])){ 
+                $this->errors->add('password', Lang::get('auth.failed')); 
             }
-            return response(Auth::user(), 201);
         } 
 
         return $this->errors;

@@ -13,35 +13,17 @@ class RegisterController extends ValidatorController
     /**
      * Create a new User and return validation errors.
      *
+     * @param  Illuminate\Http\Request $request
      * @return Illuminate\Support\MessageBag With validation errors.
      */
-    public function processRequest(Request $request) {    
-
-        if ($this->isValid($request)) {
-            $this->store($request->all());
-        }        
-            
-        return $this->errors;
-    }
-
-
-    /**
-     * Set validation errors.
-     *
-     * @return boolean
-     */
-    protected function isValid(Request $request){  
-
-        // Check for validation errors:    
+    public function processRequest(Request $request) 
+    {    
         $this->validator("registerForm", $request->all()); 
-
-        // Check for existing username:      
-        if (User::where('name', '=', $request->name)->exists()) {
-            $this->errors->add('name', 'Username already exist!');
-        }        
-
-        return $this->errors->isEmpty();
-        
+        if ($this->errors->isEmpty()) {
+            //If valid
+            $this->store($request->all());
+        }                    
+        return $this->errors;
     }
 
 

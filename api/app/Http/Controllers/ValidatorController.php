@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class ValidatorController extends Controller
 {    
@@ -21,8 +22,24 @@ class ValidatorController extends Controller
      */
     protected function validator(string $input, array $data)
     {        
-        $validator = Validator::make($data, config('validation')[(new \ReflectionClass($this))->getShortName()][$input]);
+
+        try {       
+
+            /*
+             * Get validation rules from validation config file. 
+             * 
+             */ 
+            $validator = Validator::make($data, config('validation')[(new \ReflectionClass($this))->getShortName()][$input]);
+        
+        } catch (\ErrorException $e) {
+
+            throw new \ErrorException("No validation option for $input");
+            
+        }
+
         $this->errors = $validator->errors();
+        
         return $validator;
+
     }
 }
