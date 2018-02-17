@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ValidatorController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends ValidatorController
@@ -22,6 +23,7 @@ class RegisterController extends ValidatorController
         if ($this->errors->isEmpty()) {
             //If valid
             $this->store($request->all());
+            (new LoginController())->checkAuth($request);
         }                    
         return $this->errors;
     }
