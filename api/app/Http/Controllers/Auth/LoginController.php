@@ -16,11 +16,11 @@ class LoginController extends ValidatorController
     /**
      * Get user information.
      *
-     * @return App\User Attributes.
+     * @return string Username.
      */
     public function getUserInfo()
     {
-        return Auth::user();
+        return Auth::user()->name;
     }
 
     /**

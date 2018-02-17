@@ -55,9 +55,11 @@ class BidsController extends ValidatorController
     protected function ValidateBidAmount()
     {        
         $this->highestBid = intval(Bid::getHighestBid($this->product));
+
         if ($this->highestBid <= $request->input('amount')) {
             return $this->store($request->all());
         }        
+        
         $this->errors->add('amount', 'The amount must be greater than the last bid ' + "($this->highestBid)"); 
     }
 }
