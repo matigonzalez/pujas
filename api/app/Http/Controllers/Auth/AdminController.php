@@ -23,6 +23,13 @@ class AdminController extends ValidatorController
     private $request;
 
     /**
+     * Validation errors.
+     *
+     * @var Illuminate\Support\MessageBag
+     */
+    protected $errors;
+
+    /**
      * Check if the user has privileges.
      *
      * @param Illuminate\Http\Request $request
@@ -30,13 +37,12 @@ class AdminController extends ValidatorController
      * 
      */
     public function __construct(){
-
-        $this->middleware(function ($request, $next) {     
+        $this->middleware(function ($request, $next) {   
             if (
                 !Auth::user() || 
                 !Auth::user()->privileges
             ) { 
-                abort(403, 'Admin area: Unauthorized action.'); 
+                abort(403, \Lang::get('api.unauthorized')); 
             }
 
             return $next($request);
@@ -54,7 +60,9 @@ class AdminController extends ValidatorController
     public function admin(Request $request)
     {         
         
-        if(isset($request->action) && $this->validator($request->action, $request->all())->errors()->isEmpty()){
+        $action = ($request->action) ? $request->action : 'null';
+
+        if($this->validator($action, $request->all())->errors()->isEmpty()){
 
             $this->request = $request;
             /*
@@ -68,6 +76,7 @@ class AdminController extends ValidatorController
              * uploadImage
              * 
              */
+            
             $this->{$request->action}();
         }
 

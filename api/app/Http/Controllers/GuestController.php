@@ -17,9 +17,16 @@ class GuestController extends Controller
      */
     public function getBids(int $id)
     {
-        $_Model = 'App\\' . ucfirst(explode("/",Route::getCurrentRoute()->uri)[1]);
-        $finded = $_Model::find($id);   
-        return ($finded && $finded->bids && !$finded->bids->isEmpty()) ? $finded->bids : response()->json(["error" => "Nothing found"]);
+        $_ModelName = 'App\\' . ucfirst(explode("/",Route::getCurrentRoute()->uri)[1]);        
+        $finded = $_ModelName::find($id); 
+
+        return ($finded && $finded->bids && !$finded->bids->isEmpty()) 
+        
+        ? $finded->toArray() 
+
+        : response()->json(["error" => \Lang::get('api.notfound')])
+        
+        ;
     }
 
     /**

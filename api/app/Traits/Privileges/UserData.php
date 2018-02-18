@@ -4,6 +4,7 @@ namespace App\Traits\Privileges;
 
 use App\User;
 use App\Bid;
+use Illuminate\Support\Facades\Auth;
 
 Trait UserData {
 
@@ -13,10 +14,13 @@ Trait UserData {
      * @return void
      */
     protected function updateUserPrivileges()
-    {  
-        User::edit($this->request->input('id'), [
-            "privileges" => $this->request->input('value')
-        ]);    
+    {          
+        if (Auth::id() != $this->request->id) {
+            // Auto-degrade is not allowed.
+            User::edit($this->request->id, [
+                "privileges" => $this->request->input('value')
+            ]);   
+        } 
     }
 
     /**
@@ -37,7 +41,10 @@ Trait UserData {
      * @return void
      */
     protected function destroyUser(){
-        User::destroy($this->request->input('id'));
+        if (Auth::id() != $this->request->id) {
+            // Self destruction is not allowed.
+            User::destroy($this->request->input('id'));
+        }
     }
     
     /**

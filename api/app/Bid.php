@@ -26,14 +26,14 @@ class Bid extends Model
      * @var array
      */
     protected $hidden = [
-        'updated_at', 'deleted_at', 'user_id', 'product_id', 'id'
+        'updated_at', 'deleted_at', 'id'
     ];
 
     /**
-    * The attributes that should be mutated to dates.
-    *
-    * @var array
-    */
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
     protected $dates = ['deleted_at'];
     
     /**
@@ -44,7 +44,7 @@ class Bid extends Model
      */
     protected static function getHighestBid(string $product_id)
     {
-        return DB::table('bids')->where('id', $product_id)->max('amount');
+        return DB::table('bids')->where('product_id', $product_id)->max('amount');
     }
 
     /**
@@ -64,4 +64,5 @@ class Bid extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
 }

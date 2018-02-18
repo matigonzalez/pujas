@@ -14,7 +14,18 @@ class BidsController extends ValidatorController
 
     use Access;
 
+    /**
+     * User request.
+     *
+     * @var Illuminate\Http\Request
+     */
     private $request;
+
+    /**
+     * Biggest bid at the moment for a specific product.
+     *
+     * @var int
+     */
     private $highestBid;
     
     /**
@@ -56,9 +67,10 @@ class BidsController extends ValidatorController
     protected function ValidateBidAmount()
     {                
         $this->highestBid = intval(Bid::getHighestBid($this->request->input('product')));
-        if ($this->highestBid <= $this->request->input('amount')) {
+        if ($this->request->input('amount') > $this->highestBid) {
+            // The bid needs to be greater than the last one.
             return $this->store($this->request->all());
         }                
-        $this->errors->add('amount', 'The amount must be greater than the last bid ' + "($this->highestBid)"); 
+        $this->errors->add('amount', \Lang::get('api.invalidbid') . " ($this->highestBid)"); 
     }
 }

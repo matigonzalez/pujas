@@ -1,0 +1,668 @@
+{
+	"info": {
+		"name": "pujas.api",
+		"_postman_id": "263e13d8-b1c5-9d11-c039-226409384855",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "www.pujas.api/token",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"token"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/userinfo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "www.pujas.api/auth/userinfo",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"userinfo"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/bid/user/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "www.pujas.api/bid/user/2",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"bid",
+						"user",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/bid/product/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "www.pujas.api/bid/product/2",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"bid",
+						"product",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "www.pujas.api/auth/logout",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"logout"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/get/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "www.pujas.api/auth/admin/get/users",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"admin",
+						"get",
+						"users"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "www.pujas.api/products",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"products"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "P4gicFkSn0UHaiaNL2REDe8zCPlWyU9mIwsfSAhI",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/auth/register",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "S8olvSUwRYVhKfOMQ1fWqOkzp8YQ9NgJexRjvhEL",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "admin",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/auth/login",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/bid/store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "S8olvSUwRYVhKfOMQ1fWqOkzp8YQ9NgJexRjvhEL",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "12",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "product",
+							"value": "3",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/bid/store",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"bid",
+						"store"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "S8olvSUwRYVhKfOMQ1fWqOkzp8YQ9NgJexRjvhEL",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/auth/admin",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"admin"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/admin.updateUserPrivileges",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "S8olvSUwRYVhKfOMQ1fWqOkzp8YQ9NgJexRjvhEL",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "updateUserPrivileges",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "value",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/auth/admin",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"admin"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/admin.destroyUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "S8olvSUwRYVhKfOMQ1fWqOkzp8YQ9NgJexRjvhEL",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "destroyUser",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/auth/admin",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"admin"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/admin.destroyBid",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "S8olvSUwRYVhKfOMQ1fWqOkzp8YQ9NgJexRjvhEL",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "destroyBid",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "4",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/auth/admin",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"admin"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/admin.createProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "S8olvSUwRYVhKfOMQ1fWqOkzp8YQ9NgJexRjvhEL",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "createProduct",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "http://testing",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/auth/admin",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"admin"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/admin.destroyProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "S8olvSUwRYVhKfOMQ1fWqOkzp8YQ9NgJexRjvhEL",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "destroyProduct",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "5",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/auth/admin",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"admin"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/admin.uploadImage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "S8olvSUwRYVhKfOMQ1fWqOkzp8YQ9NgJexRjvhEL",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "uploadImage",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"description": "",
+							"type": "file",
+							"src": "wp.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/auth/admin",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"admin"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth/admin.updateProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "_token",
+							"value": "S8olvSUwRYVhKfOMQ1fWqOkzp8YQ9NgJexRjvhEL",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "action",
+							"value": "updateProduct",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "5",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "245245",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "http://adgadg",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "on_sale",
+							"value": "3",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "www.pujas.api/auth/admin",
+					"host": [
+						"www",
+						"pujas",
+						"api"
+					],
+					"path": [
+						"auth",
+						"admin"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

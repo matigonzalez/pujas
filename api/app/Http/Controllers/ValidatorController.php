@@ -24,7 +24,6 @@ class ValidatorController extends Controller
      */
     protected function validator(string $input, array $data)
     {        
-
         try {       
 
             /*
@@ -35,7 +34,7 @@ class ValidatorController extends Controller
         
         } catch (\ErrorException $e) {
 
-            throw new \ErrorException("No validation option for $input");
+            throw new \ErrorException(\Lang::get('api.missvalidation') . " ($input)");
             
         }
 

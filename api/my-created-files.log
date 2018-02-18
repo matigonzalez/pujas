@@ -1,0 +1,47 @@
+Created files
+
+    Controllers
+
+    /var/www/html/pujas/api/app/Http/Controllers/Auth/AdminController.php
+    /var/www/html/pujas/api/app/Http/Controllers/Auth/LoginController.php
+    /var/www/html/pujas/api/app/Http/Controllers/Auth/RegisterController.php
+    /var/www/html/pujas/api/app/Http/Controllers/BidsController.php
+    /var/www/html/pujas/api/app/Http/Controllers/GuestController.php
+    /var/www/html/pujas/api/app/Http/Controllers/ValidatorController.php
+    /var/www/html/pujas/api/app/Traits/Privileges/Access.php
+    /var/www/html/pujas/api/app/Traits/Privileges/Products.php
+    /var/www/html/pujas/api/app/Traits/Privileges/UserData.php
+
+    Middlewares
+
+    /var/www/html/pujas/api/app/Http/Middleware/Cors.php (Unused)
+
+    Models
+
+    /var/www/html/pujas/api/app/Bid.php
+    /var/www/html/pujas/api/app/Product.php
+    /var/www/html/pujas/api/app/User.php
+    /var/www/html/pujas/api/app/GeneralModel.php
+
+    Config
+
+    /var/www/html/pujas/api/config/validation.php
+
+    Migrations
+
+    /var/www/html/pujas/api/database/migrations/2014_10_12_000000_create_users_table.php
+    /var/www/html/pujas/api/database/migrations/2018_02_16_014138_create_products_table.php
+    /var/www/html/pujas/api/database/migrations/2018_02_16_030607_create_bids_table.php
+    /var/www/html/pujas/api/database/migrations/2018_02_16_230607_create_triggers.php
+
+    Seeders
+
+    /var/www/html/pujas/api/database/seeds/BidSeeder.php
+    /var/www/html/pujas/api/database/seeds/ProductSeeder.php
+    /var/www/html/pujas/api/database/seeds/UserSeeder.php
+
+Native modified Laravel files 
+
+    /var/www/html/pujas/api/app/Exceptions/Handler.php
+    /var/www/html/pujas/api/database/seeds/DatabaseSeeder.php
+    /var/www/html/pujas/api/routes/web.php

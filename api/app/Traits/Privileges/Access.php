@@ -13,9 +13,12 @@ Trait Access {
      * 
      */
     public function __construct(){  
-        if (!Auth::id()){
-            abort(403, 'Unauthorized action.');
-        }
+        $this->middleware(function($request, $next) {
+            if (!Auth::id()){
+                abort(403, \Lang::get('api.unauthorized'));
+            }
+            return $next($request);
+        });
     }
 }
 

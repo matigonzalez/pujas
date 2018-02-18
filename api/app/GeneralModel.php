@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 trait GeneralModel
 {
+
     /**
      * Update by database id.
      *

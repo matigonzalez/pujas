@@ -6,7 +6,6 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ValidatorController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Lang;
 
 
 class LoginController extends ValidatorController
@@ -22,7 +21,7 @@ class LoginController extends ValidatorController
     {
         return (Auth::user()) ? 
         response()->json(["name" => Auth::user()->name]) :
-        response()->json(["error" => "Need to login"], 401, ["WWW-Authenticate" => "Basic"]);
+        response()->json(["error" => \Lang::get('api.unlogged')], 401, ["WWW-Authenticate" => "Basic"]);
     }
 
     /**
@@ -51,7 +50,7 @@ class LoginController extends ValidatorController
                 'name' => $request->input('name'),
                 'password' => $request->input('password')
             ])){ 
-                $this->errors->add('password', Lang::get('auth.failed')); 
+                $this->errors->add('password', \Lang::get('auth.failed')); 
             }
         } 
 
