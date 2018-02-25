@@ -10,7 +10,7 @@ return [
     "LoginController" => [
         "loginForm" => [
             'name' => 'required|string|max:255',    
-            'password' => 'required|string|min:4',
+            'password' => 'required|string',
         ]
     ],
     "AdminController" => [

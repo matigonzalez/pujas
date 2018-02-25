@@ -21,7 +21,7 @@ class LoginController extends ValidatorController
     {
         return (Auth::user()) ? 
         response()->json(["name" => Auth::user()->name]) :
-        response()->json(["error" => \Lang::get('api.unlogged')], 401, ["WWW-Authenticate" => "Basic"]);
+        response()->json(["error" => \Lang::get('api.unlogged')], 403);
     }
 
     /**
@@ -41,7 +41,6 @@ class LoginController extends ValidatorController
      */
     public function checkAuth(Request $request)
     {
-
         if ($this->validator("loginForm", $request->all())->errors()->isEmpty()){
             /*
              * Try to login             

@@ -3,7 +3,7 @@
 ### GET
 `Route::get('token');`
  - Return token string
-
+ 
 `Route::get('auth/logout', 'Auth\LoginController@logout');`
  - Return null
 

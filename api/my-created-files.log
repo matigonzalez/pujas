@@ -26,14 +26,16 @@ Created files
     Config
 
     /var/www/html/pujas/api/config/validation.php
-
+    /var/www/html/pujas/api/resources/lang/en/api.php
+    
     Migrations
 
     /var/www/html/pujas/api/database/migrations/2014_10_12_000000_create_users_table.php
     /var/www/html/pujas/api/database/migrations/2018_02_16_014138_create_products_table.php
     /var/www/html/pujas/api/database/migrations/2018_02_16_030607_create_bids_table.php
     /var/www/html/pujas/api/database/migrations/2018_02_16_230607_create_triggers.php
-
+    /var/www/html/pujas/api/database/migrations/2018_02_18_203608_create_sessions_table.php
+    
     Seeders
 
     /var/www/html/pujas/api/database/seeds/BidSeeder.php
@@ -45,3 +47,4 @@ Native modified Laravel files
     /var/www/html/pujas/api/app/Exceptions/Handler.php
     /var/www/html/pujas/api/database/seeds/DatabaseSeeder.php
     /var/www/html/pujas/api/routes/web.php
+    /var/www/html/pujas/api/config/session.php

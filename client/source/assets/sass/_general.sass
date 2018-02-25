@@ -1,0 +1,50 @@
+
+$primary: #48D121
+$lighten: #ffffff
+    
+html
+    position: relative
+    height: 100%
+
+
+html 
+    & body, & .container, & [ng-view], & .align-items-center
+        height: 100%
+
+.ontop 
+    padding: 60px 15px
+
+
+    
+* 
+    font-family: "Source Sans Pro","Open Sans",X-LocaleSpecific,sans-serif;
+    
+
+.ng-leave
+    display: none
+    
+.ng-enter
+    opacity: .8
+    transition: opacity 600ms, transform 400ms
+    transform: scale(.991)
+    
+@keyframes shake 
+    0% 
+        transform: translateX(10px)
+    
+    100% 
+        transform: translateX(0)
+
+.ng-enter-active.text-danger
+    position: relative
+    animation: shake 300ms ease-out
+
+.ng-enter-active
+    opacity: 1
+    transform: scale(1)
+
+.navbar-dark .navbar-nav .nav-link 
+    color: #ffffff
+
+img 
+    opacity: 1

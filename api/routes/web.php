@@ -11,19 +11,27 @@
 |
 */
 
-Route::get('token', function () { return response()->json(["_token" => csrf_token()]);});
-Route::get('auth/userinfo', 'Auth\LoginController@getUserInfo');
-Route::get('auth/logout', 'Auth\LoginController@logout');
+// header("");
 
-Route::post('auth/login', 'Auth\LoginController@checkAuth'); 
-Route::post('auth/register', 'Auth\RegisterController@processRequest');
 
-Route::post('bid/store', 'BidsController@newBid');
-Route::get('bid/product/{id}', 'GuestController@getBids')->where('id', '[0-9]+');
-Route::get('bid/user/{id}', 'GuestController@getBids')->where('id', '[0-9]+');
+Route::group(['middleware' => ['cors']], function () {
 
-Route::post('auth/admin', 'Auth\AdminController@admin');
-Route::get('auth/admin/get/users', 'Auth\AdminController@getAllUsers');
-Route::get('products', 'GuestController@getAllProducts');
+    Route::get('token', function () { return response()->json(["_token" => csrf_token()]);});
+    Route::get('auth/userinfo', 'Auth\LoginController@getUserInfo')->middleware('cors');
+    Route::get('auth/logout', 'Auth\LoginController@logout');
+
+    Route::post('auth/login', 'Auth\LoginController@checkAuth'); 
+    Route::post('auth/register', 'Auth\RegisterController@processRequest');
+
+    Route::post('bid/store', 'BidsController@newBid');
+    Route::get('bid/product/{id}', 'GuestController@getBids')->where('id', '[0-9]+');
+    Route::get('bid/user/{id}', 'GuestController@getBids')->where('id', '[0-9]+');
+
+    Route::post('auth/admin', 'Auth\AdminController@admin');
+    Route::get('auth/admin/get/users', 'Auth\AdminController@getAllUsers');
+    Route::get('products', 'GuestController@getAllProducts');
+
+});
+
 
 
