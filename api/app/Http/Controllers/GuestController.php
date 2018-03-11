@@ -30,12 +30,13 @@ class GuestController extends Controller
     }
 
     /**
-     * List all products.
+     * List all products on sale.
      *
      * @return App\Product
      * 
      */
-    public function getAllProducts(){
-        return Product::get();
+    public function getAllProductsOnSale(){
+        return Product::getOnSale();
     }
+
 }

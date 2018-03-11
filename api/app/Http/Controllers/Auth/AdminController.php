@@ -16,6 +16,13 @@ class AdminController extends ValidatorController
     use Privilege\UserData, Privilege\Products;
 
     /**
+     * Actual route.
+     *
+     * @var string
+     */
+    private $route;
+
+    /**
      * User incoming request.
      *
      * @var Illuminate\Http\Request
@@ -37,14 +44,15 @@ class AdminController extends ValidatorController
      * 
      */
     public function __construct(){
-        $this->middleware(function ($request, $next) {   
+        $this->middleware(function (Request $request, $next) {  
+             
             if (
                 !Auth::user() || 
                 !Auth::user()->privileges
             ) { 
                 abort(403, \Lang::get('api.unauthorized')); 
             }
-
+            $this->admin($request);
             return $next($request);
 
         });
@@ -59,11 +67,14 @@ class AdminController extends ValidatorController
      */
     public function admin(Request $request)
     {         
-        
-        $action = ($request->action) ? $request->action : 'null';
+        preg_match(
+            "/@.+/", 
+            Route::getCurrentRoute()->getActionName(), 
+            $this->route
+        );
 
-        if($this->validator($action, $request->all())->errors()->isEmpty()){
-
+        if($this->validator(str_replace("@", "", $this->route[0]), $request->all())->errors()->isEmpty()){
+            
             $this->request = $request;
             /*
              * Admin can:
@@ -77,21 +88,11 @@ class AdminController extends ValidatorController
              * 
              */
             
-            $this->{$request->action}();
+        } else {
+            die(serialize($this->errors)); 
         }
 
         return $this->errors;
     }
-
-    /**
-     * List all users.
-     *
-     * @return App\User
-     * 
-     */
-    public function getAllUsers(){
-        return User::get();
-    }
-
 
 }

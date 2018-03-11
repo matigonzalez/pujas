@@ -1,5 +1,7 @@
 
 # API Endpoints
+
+## USERS
 ### GET
 `Route::get('token');`
  - Return token string
@@ -15,9 +17,6 @@
 
 `Route::get('bid/user/{id}', 'GuestController@getBids')->where('id', '[0-9]+');`
  - Return bids for a specific user
-
-`Route::get('auth/admin/get/users', 'Auth\AdminController@getAllUsers');`
- - Return all users
 
 `Route::get('products', 'GuestController@getAllProducts');`
  - Return all products
@@ -41,40 +40,47 @@
  > 'product' => 'integer' 
  - Return validation errors
 
-`Route::post('auth/admin', 'Auth\AdminController@admin');`
- - Receives:
- > 'action' => 'updateUserPrivileges|destroyUser|createProduct|destroyProduct|uploadImage|updateProduct', 
- - Return validation errors
-##### action.*updateUserPrivileges*
+## ADMIN
+### GET
+
+`Route::get('auth/admin/products/get', 'Auth\AdminController@getAllProducts');`
+ - Return all, even deleted or hidden products
+
+`Route::get('auth/admin/users/get', 'Auth\AdminController@getAllUsers');`
+ - Return all users
+
+### POST
+
+`Route::post('auth/admin/users/authorization', 'Auth\AdminController@updateUserPrivileges');`
  - Receives:
  > 'id' => 'integer',    
  > 'action' => 'string',    
  > 'value' => 'boolean'
-##### action.*destroyUser*
+
+`Route::post('auth/admin/users/delete', 'Auth\AdminController@destroyUser');`
  - Receives:
- > 'id' => 'integer',
- > 'action' => 'string' 
-##### action.*destroyBid*
+ > 'id' => 'integer'
+
+`Route::post('auth/admin/bid/delete', 'Auth\AdminController@destroyBid');`
  - Receives:
- > 'id' => 'integer',
- > 'action' => 'string' 
-##### action.*createProduct*
+ > 'id' => 'integer'
+
+`Route::post('auth/admin/products/add', 'Auth\AdminController@createProduct');`
  - Receives:
  > 'name' => 'string',    
- > 'image' => 'string',
- > 'action' => 'string'
-##### action.*destroyProduct*
+ > 'image' => 'string'
+
+`Route::post('auth/admin/products/delete', 'Auth\AdminController@destroyProduct');`
  - Receives:
- > 'id' => 'integer',
- > 'action' => 'string'  
-##### action.*uploadImage*
+ > 'id' => 'integer'
+
+`Route::post('auth/admin/media/upload', 'Auth\AdminController@uploadImage');`
  - Receives:
- > 'file' => 'image',
- > 'action' => 'string'  
-##### action.*updateProduct*
+ > 'file' => 'image'
+
+`Route::post('auth/admin/products/edit', 'Auth\AdminController@updateProduct');`
  - Receives:
  > 'id' => 'integer',
  > 'name' => 'string',    
  > 'image' => 'string',
- > 'on_sale' => 'integer',
- > 'action' => 'string'
+ > 'on_sale' => 'integer'

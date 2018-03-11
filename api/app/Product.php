@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 use App\GeneralModel;
 
 class Product extends Model
@@ -43,4 +44,16 @@ class Product extends Model
     public function bids(){
         return $this->hasMany(Bid::class);
     }
+
+    /**
+     * Get all products on sale.
+     *
+     * @param  string $product_id
+     * @return \App\Bid
+     */
+    protected static function getOnSale()
+    {
+        return DB::table('products')->where('on_sale', 1)->get();
+    }
+
 }

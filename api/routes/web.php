@@ -22,14 +22,26 @@ Route::group(['middleware' => ['cors']], function () {
 
     Route::post('auth/login', 'Auth\LoginController@checkAuth'); 
     Route::post('auth/register', 'Auth\RegisterController@processRequest');
+    
+    Route::get('products', 'GuestController@getAllProductsOnSale');
 
-    Route::post('bid/store', 'BidsController@newBid');
     Route::get('bid/product/{id}', 'GuestController@getBids')->where('id', '[0-9]+');
     Route::get('bid/user/{id}', 'GuestController@getBids')->where('id', '[0-9]+');
+    Route::post('bid/store', 'BidsController@newBid');
+ 
+    Route::get('auth/admin/users/get', 'Auth\AdminController@getAllUsers');
+    Route::post('auth/admin/users/authorization', 'Auth\AdminController@updateUserPrivileges');
+    Route::post('auth/admin/users/delete', 'Auth\AdminController@destroyUser');
 
-    Route::post('auth/admin', 'Auth\AdminController@admin');
-    Route::get('auth/admin/get/users', 'Auth\AdminController@getAllUsers');
-    Route::get('products', 'GuestController@getAllProducts');
+    Route::get('auth/admin/products/get', 'Auth\AdminController@getAllProducts');
+    Route::post('auth/admin/products/add', 'Auth\AdminController@createProduct');
+    Route::post('auth/admin/products/edit', 'Auth\AdminController@updateProduct');
+    Route::post('auth/admin/products/delete', 'Auth\AdminController@destroyProduct');
+
+    Route::post('auth/admin/bid/delete', 'Auth\AdminController@destroyBid');
+
+    Route::post('auth/admin/media/upload', 'Auth\AdminController@uploadImage');
+    
 
 });
 

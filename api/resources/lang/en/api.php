@@ -14,7 +14,8 @@ return [
     'unauthorized' => 'Unauthorized action.',
     'unlogged' => 'Not registered',
     'missvalidation' => 'No validation option',
+    'validationerror' => 'Validation error, try again',
     'invalidbid' => 'The amount must be greater than the last bid',
-    'notfound' => 'Nothing found',
+    'notfound' => 'Nothing found'
 
 ];

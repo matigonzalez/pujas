@@ -16,9 +16,10 @@ module.factory('xhrHttp', function(launcher) {
     function setFields(conf) {
         var 
         url = conf.url,
-        data = ((typeof data === "object") ? $.param(conf.data) : "&" + conf.data) || "";        
+        data = ((typeof conf.data === "object") ? "&" + $.param(conf.data) : "&" + conf.data) || "";    
         options.url = launcher.api() + url;
-        options.data = "_token=" + launcher.token() + data;
+        options.data = "_token=" + launcher.token() + data;  
+
         return this;
     }
 

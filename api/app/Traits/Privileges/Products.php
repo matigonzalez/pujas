@@ -52,5 +52,17 @@ Trait Products {
             );  
         }
     }
+
+    /**
+     * List all products.
+     *
+     * @return App\Product
+     * 
+     */
+    protected function getAllProducts(){
+        return Product::get();
+    }
+
+
 }
 
